@@ -16,13 +16,16 @@
 						{{ Lang::get('profile.showProfileTitle') }}
 					</div>
 					<div class="panel-body">
+
 						<dl class="user-info">
+
 							<dt>
 								{{ Lang::get('profile.showProfileUsername') }}
 							</dt>
 							<dd>
 								{{ $user->name }}
 							</dd>
+
 							<dt>
 								{{ Lang::get('profile.showProfileFirstName') }}
 							</dt>
@@ -30,12 +33,14 @@
 								{{ $user->first_name }}
 							</dd>
 
-							<dt>
-								{{ Lang::get('profile.showProfileLastName') }}
-							</dt>
-							<dd>
-								{{ $user->last_name }}
-							</dd>
+							@if ($user->last_name)
+								<dt>
+									{{ Lang::get('profile.showProfileLastName') }}
+								</dt>
+								<dd>
+									{{ $user->last_name }}
+								</dd>
+							@endif
 
 							<dt>
 								{{ Lang::get('profile.showProfileEmail') }}
@@ -62,6 +67,7 @@
 										{{ $user->profile->bio }}
 									</dd>
 								@endif
+
 								@if ($user->profile->twitter_username)
 									<dt>
 										{{ Lang::get('profile.showProfileTwitterUsername') }}
@@ -70,6 +76,7 @@
 										{!! HTML::link('https://twitter.com/'.$user->profile->twitter_username, $user->profile->twitter_username, array('class' => 'twitter-link', 'target' => '_blank')) !!}
 									</dd>
 								@endif
+
 								@if ($user->profile->github_username)
 									<dt>
 										{{ Lang::get('profile.showProfileGitHubUsername') }}
@@ -83,9 +90,11 @@
 						</dl>
 
 						@if ($user->profile)
-							{!! HTML::link(url('/profile/'.Auth::user()->name.'/edit'), Lang::get('titles.editProfile')) !!}
+							@if (Auth::user()->id == $user->id)
+								{!! HTML::link(url('/profile/'.Auth::user()->name.'/edit'), Lang::get('titles.editProfile')) !!}
+							@endif
 						@else
-							<p>No profile yet.</p>
+							<p>{{ Lang::get('profile.noProfileYet') }}</p>
 							{!! HTML::link(url('/profile/'.Auth::user()->name.'/edit'), Lang::get('titles.createProfile')) !!}
 						@endif
 

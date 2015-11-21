@@ -79,7 +79,15 @@ class ProfilesController extends Controller {
      */
     public function edit($username)
     {
-        $user = $this->getUserByUsername($username)->firstOrFail();
+        try {
+            $user = $this->getUserByUsername($username);
+            //dd($user->toArray());
+        } catch (ModelNotFoundException $e) {
+            return view('pages.status')
+                ->with('error',\Lang::get('profile.notYourProfile'))
+                ->with('error_title',\Lang::get('profile.notYourProfileTitle'));
+        }
+        //dd($user->toArray());
         return view('profiles.edit')->withUser($user);
     }
 
@@ -92,7 +100,7 @@ class ProfilesController extends Controller {
      */
     public function update($username, Request $request)
     {
-        $user = $this->getUserByUsername($username)->firstOrFail();
+        $user = $this->getUserByUsername($username);
 
         $input = Input::only('location', 'bio', 'twitter_username', 'github_username');
 
@@ -109,6 +117,7 @@ class ProfilesController extends Controller {
 
         if ($user->profile == null) {
             $profile = new Profile;
+            $profile->fill($input);
             $user->profile()->save($profile);
         } else {
             $user->profile->fill($input)->save();
