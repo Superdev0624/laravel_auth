@@ -70,7 +70,7 @@ Laravel 5.4 with user authentication, registration with email confirmation, soci
 |User Themes|
 |404 Page|
 |403 Page|
-|Configurable Email Notification via [Laravel-Exception-Notifier](https://github.com/jeremykenedy/laravel-exception-notifier)|
+
 |User Delete with Goodby email|
 |User Restore Deleted Account|
 
@@ -272,13 +272,6 @@ MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS=
 MAIL_FROM_NAME=''
 
-EMAIL_EXCEPTION_ENABLED=false
-EMAIL_EXCEPTION_FROM=email#email.com
-EMAIL_EXCEPTION_TO='email1@gmail.com, email2@rubicon.com'
-EMAIL_EXCEPTION_CC=''
-EMAIL_EXCEPTION_BCC=''
-EMAIL_EXCEPTION_SUBJECT=''
-
 ACTIVATION=true
 ACTIVATION_LIMIT_TIME_PERIOD=24
 ACTIVATION_LIMIT_MAX_ATTEMPTS=3
@@ -288,7 +281,7 @@ NULL_IP_ADDRESS=0.0.0.0
 DEBUG_BAR_ENVIRONMENT=local
 
 USER_RESTORE_CUTOFF_DAYS=31
-USER_RESTORE_ENRYPTION_KEY=
+USER_RESTORE_ENCRYPTION_KEY=
 
 DEFAULT_GRAVATAR_SIZE=80
 DEFAULT_GRAVATAR_FALLBACK=http://c1940652.r52.cf0.rackcdn.com/51ce28d0fb4f442061000000/Screen-Shot-2013-06-28-at-5.22.23-PM.png
@@ -311,6 +304,7 @@ GOOGLE_SECRET=YOURGOOGLEPLUSsecretHERE
 GOOGLE_REDIRECT=http://yourwebsiteURLhere.com/social/handle/google
 
 # https://www.google.com/recaptcha/admin#list
+ENABLE_RECAPTCHA=false
 RE_CAP_SITE=YOURGOOGLECAPTCHAsitekeyHERE
 RE_CAP_SECRET=YOURGOOGLECAPTCHAsecretHERE
 
@@ -391,7 +385,6 @@ INSTAGRAM_REDIRECT_URI=http://laravel-auth.local/social/handle/instagram
 * Added Google Maps API v3 for User Location Input Geocoding
 * Added Google Maps API v3 for User Location Map with Options
 * Added CRUD(Create, Read, Update, Delete) User Management
-* Added Configurable Email Notification using [Laravel-Exception-Notifier](https://github.com/jeremykenedy/laravel-exception-notifier)
 
 ### Screenshots
 ![Login](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-auth/1laravel-auth2-login.jpg)
@@ -602,7 +595,7 @@ Code and documentation copyright 2011-2017 the [Bootstrap Authors](https://githu
 #### VAGRANT Dev Environment References
 
 ###### VAGRANT Virtual Machine Details
-|Item        |Value:
+|Item           |Value:        |
 |:------------- |:-------------|
 |Hostname|homestead|
 |IP Address|192.168.10.10|
@@ -612,15 +605,16 @@ Code and documentation copyright 2011-2017 the [Bootstrap Authors](https://githu
 |Database Port|33060|
 |Database Username|homestead|
 |Database Password|secret|
+
 ###### Start VAGRANT
-|Command        |Action
+|Command        |Action        |
 |:------------- |:-------------|
 | `vagrant up` | Start Vagrant VM |
 | `vagrant up --provision` | Start Vagrant VM if vagrantfile updated |
 | `vagrant halt` | Stop Vagrant VM |
 
 ###### Access VAGRANT SSH and MySQL
-|Command        |Action      |
+|Command        |Action      | |
 |------------- |:------------- |:-------------|
 | ```sudo ssh vagrant@127.0.0.1 -p 222``` | Access Vagrant VM via SSH. Password is ``` vagrant  ``` |
 | ```mysql -u homestead -psecret``` | Access Vagrant VM MySQL. Password is ``` vagrant  ``` |
@@ -628,42 +622,42 @@ Code and documentation copyright 2011-2017 the [Bootstrap Authors](https://githu
 If you do not have Bower, it can be installed using Node Package Manager (NPM).
 If you do not have NPM, it can be installed using NODE JS.
 
-###Install NODE JS
-####Node JS can be installed muliple ways:
+### Install NODE JS
+#### Node JS can be installed muliple ways:
 Mac GUI Installer, easiest way (Simply [Download](https://nodejs.org/en/) and Install)
 
-####Node JS can also be installed using Homebrew Package Manager with the following command:
+#### Node JS can also be installed using Homebrew Package Manager with the following command:
 ```
 brew install node
 ```
 
-###Install Node Package Manager (NPM)
-####NPM can be installed using the following command:
+### Install Node Package Manager (NPM)
+#### NPM can be installed using the following command:
 ```
 npm install -g bower
 ```
 
-###Install Bower
-####Bower can be installed with the following command:
+### Install Bower
+#### Bower can be installed with the following command:
 ```
 sudo npm install -g bower
 ```
 
-###Install GULP
-####GULP can be installed using the following command:
+### Install GULP
+#### GULP can be installed using the following command:
 ```
 npm install -g gulp
 ```
 
-###Install COMPOSER
+### Install COMPOSER
 
-####COMPOSER can be installed using the following commands:
+#### COMPOSER can be installed using the following commands:
 ```
 sudo curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 ```
 
-####COMPOSER on MAC OS X can be installed using the following commands:
+#### COMPOSER on MAC OS X can be installed using the following commands:
 ```
 sudo brew update
 sudo brew tap homebrew/dupes
