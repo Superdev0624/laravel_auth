@@ -9,16 +9,20 @@
 - [About](#about)
 - [Features](#features)
 - [Installation Instructions](#installation-instructions)
-    - [Build the Front End Assets with Mix(#rebuild-front-end-assets-with-mix)
+    - [Build the Front End Assets with Mix](#rebuild-front-end-assets-with-mix)
     - [Optionally Build Cache](#optionally-build-cache)
 - [Seeds](#seeds)
+    - [Seeded Roles](#seeded-roles)
+    - [Seeded Permissions](#seeded-permissions)
+    - [Seeded Users](#seeded-users)
+    - [Themes Seed List](#themes-seed-list)
 - [Routes](#routes)
-  - [Authentication Routes](#authentication-routes)
-  - [Profile Routes](#profile-routes)
-  - [Admin Routes](#admin-routes)
+    - [Authentication Routes](#authentication-routes)
+    - [Profile Routes](#profile-routes)
+    - [Admin Routes](#admin-routes)
 - [Socialite](#socialite)
-  - [Get Socialite Login API Keys](#get-socialite-login-api-keys)
-  - [Add More Socialite Logins](#add-more-socialite-logins)
+    - [Get Socialite Login API Keys](#get-socialite-login-api-keys)
+    - [Add More Socialite Logins](#add-more-socialite-logins)
 - [Other API keys](#other-api-keys)
 - [Environment File](#environment-file)
 - [Updates](#updates)
@@ -26,7 +30,6 @@
 - [File Tree](#file-tree)
 - [Opening an Issue](#opening-an-issue)
 - [Laravel Auth License](#laravel-auth-license)
-
 
 ### About
 Laravel 5.5 with user authentication, registration with email confirmation, social media authentication, password recovery, and captcha protection. This also makes full use of Controllers for the routes, templates for the views, and makes use of middleware for routing. Project can be stood up in minutes.
@@ -81,26 +84,30 @@ Laravel 5.5 with user authentication, registration with email confirmation, soci
 |User Restore Deleted Account|
 |Activity Logging using [Laravel-logger](https://github.com/jeremykenedy/laravel-logger)|
 |Optional 2-step account login verfication with [Laravel 2-Step Verification](https://github.com/jeremykenedy/laravel2step)|
+|Uses [Laravel PHP Info](https://github.com/jeremykenedy/laravel-phpinfo) package|
 
 ### Installation Instructions
-1. Run `sudo git clone https://github.com/jeremykenedy/laravel-auth.git laravel-auth`
+1. Run `git clone https://github.com/jeremykenedy/laravel-auth.git laravel-auth`
 2. Create a MySQL database for the project
     * ```mysql -u root -p```, if using Vagrant: ```mysql -u homestead -psecret```
     * ```create database laravelAuth;```
     * ```\q```
 3. From the projects root run `cp .env.example .env`
-4. Configure your `.env` file // NOTE: Google API Key will prevent maps error
-5. Run `sudo composer update` from the projects root folder
-6. Run `php artisan vendor:publish --provider="jeremykenedy\LaravelRoles\RolesServiceProvider" --tag=config`
-7. Run `php artisan vendor:publish --provider="jeremykenedy\LaravelRoles\RolesServiceProvider" --tag=migrations`
-8. Run `php artisan vendor:publish --provider="jeremykenedy\LaravelRoles\RolesServiceProvider" --tag=seeds`
-9. Run `php artisan vendor:publish --tag=laravel2step`
-10. From the projects root folder run `sudo chmod -R 755 ../laravel-auth`
-11. From the projects root folder run `php artisan key:generate`
-12. From the projects root folder run `php artisan migrate`
-13. From the projects root folder run `composer dump-autoload`
-14. From the projects root folder run `php artisan db:seed`
-15. Compile the front end assets with [NPM](#using-npm) or [yarn](#using-yarn).
+4. Configure your `.env` file
+5. Run `composer update` from the projects root folder
+6. From the projects root folder run:
+```
+php artisan vendor:publish --provider="jeremykenedy\LaravelRoles\RolesServiceProvider" --tag=config &&
+php artisan vendor:publish --provider="jeremykenedy\LaravelRoles\RolesServiceProvider" --tag=migrations &&
+php artisan vendor:publish --provider="jeremykenedy\LaravelRoles\RolesServiceProvider" --tag=seeds &&
+php artisan vendor:publish --tag=laravel2step
+```
+7. From the projects root folder run `sudo chmod -R 755 ../laravel-auth`
+8. From the projects root folder run `php artisan key:generate`
+9. From the projects root folder run `php artisan migrate`
+10. From the projects root folder run `composer dump-autoload`
+11. From the projects root folder run `php artisan db:seed`
+12. Compile the front end assets with [npm steps](#using-npm) or [yarn steps](#using-yarn).
 
 #### Build the Front End Assets with Mix
 ##### Using NPM:
@@ -114,30 +121,30 @@ Laravel 5.5 with user authentication, registration with email confirmation, soci
   * You can watch assets with `yarn run watch`
 
 #### Optionally Build Cache
-1. From the projects root folder run `sudo php artisan config:cache`
+1. From the projects root folder run `php artisan config:cache`
 
 ###### And thats it with the caveat of setting up and configuring your development environment. I recommend [Laravel Homestead](https://laravel.com/docs/5.5/homestead)
 
 ### Seeds
-1. Seeded Roles
+##### Seeded Roles
   * Unverified - Level 0
   * User  - Level 1
   * Administrator - Level 5
 
-2. Seeded Permissions
+##### Seeded Permissions
   * view.users
   * create.users
   * edit.users
   * delete.users
 
-3. Seeded Users
+##### Seeded Users
 
 |Email|Password|Access|
 |:------------|:------------|:------------|
 |user@user.com|password|User Access|
 |admin@admin.com|password|Admin Access|
 
-4. Themes Seed List
+##### Themes Seed List
   * [ThemesTableSeeder](https://github.com/jeremykenedy/laravel-auth/blob/master/database/seeds/ThemesTableSeeder.php)
 
 ### Routes
@@ -171,7 +178,7 @@ Laravel 5.5 with user authentication, registration with email confirmation, soci
 
 #### Admin Tools Routes
 * ```/logs```
-* ```/php```
+* ```/phpinfo```
 * ```/routes```
 
 #### Admin Soft Deleted Users Management Routes
@@ -503,6 +510,7 @@ INSTAGRAM_REDIRECT_URI=http://laravel-authentication.local/social/handle/instagr
 laravel-auth
 ├── .circleci
 │   └── config.yml
+├── .env
 ├── .env.example
 ├── .env.travis
 ├── .gitattributes
@@ -597,6 +605,7 @@ laravel-auth
 │   ├── filesystems.php
 │   ├── gravatar.php
 │   ├── laravel2step.php
+│   ├── laravelPhpInfo.php
 │   ├── mail.php
 │   ├── queue.php
 │   ├── roles.php
@@ -630,6 +639,99 @@ laravel-auth
 │       └── UsersTableSeeder.php
 ├── license.svg
 ├── package.json
+├── packages
+│   └── jeremykenedy
+│       ├── laravel-https
+│       │   ├── .gitignore
+│       │   ├── LICENSE
+│       │   ├── README.md
+│       │   ├── composer.json
+│       │   └── src
+│       │       ├── LaravelHttpsServiceProvider.php
+│       │       ├── app
+│       │       │   └── Http
+│       │       │       └── Middleware
+│       │       │           ├── CheckHTTPS.php
+│       │       │           └── ForceHTTPS.php
+│       │       ├── config
+│       │       │   └── laravel-https.php
+│       │       └── resources
+│       │           ├── lang
+│       │           │   └── en
+│       │           │       └── laravel-https.php
+│       │           └── views
+│       │               └── errors
+│       │                   └── 403.blade.php
+│       ├── laravel-logger
+│       │   ├── .gitignore
+│       │   ├── CODE_OF_CONDUCT.md
+│       │   ├── LICENSE
+│       │   ├── README.md
+│       │   ├── composer.json
+│       │   └── src
+│       │       ├── .env.example
+│       │       ├── LaravelLoggerServiceProvider.php
+│       │       ├── app
+│       │       │   ├── Http
+│       │       │   │   ├── Controllers
+│       │       │   │   │   └── LaravelLoggerController.php
+│       │       │   │   ├── Middleware
+│       │       │   │   │   └── LogActivity.php
+│       │       │   │   └── Traits
+│       │       │   │       ├── ActivityLogger.php
+│       │       │   │       ├── IpAddressDetails.php
+│       │       │   │       └── UserAgentDetails.php
+│       │       │   ├── Listeners
+│       │       │   │   ├── LogAuthenticated.php
+│       │       │   │   ├── LogAuthenticationAttempt.php
+│       │       │   │   ├── LogFailedLogin.php
+│       │       │   │   ├── LogLockout.php
+│       │       │   │   ├── LogPasswordReset.php
+│       │       │   │   ├── LogSuccessfulLogin.php
+│       │       │   │   └── LogSuccessfulLogout.php
+│       │       │   ├── Logic
+│       │       │   │   └── helpers.php
+│       │       │   └── Models
+│       │       │       └── Activity.php
+│       │       ├── config
+│       │       │   └── laravel-logger.php
+│       │       ├── database
+│       │       │   └── migrations
+│       │       │       └── 2017_11_04_103444_create_laravel_logger_activity_table.php
+│       │       ├── resources
+│       │       │   ├── lang
+│       │       │   │   └── en
+│       │       │   │       └── laravel-logger.php
+│       │       │   └── views
+│       │       │       ├── forms
+│       │       │       │   ├── clear-activity-log.blade.php
+│       │       │       │   ├── delete-activity-log.blade.php
+│       │       │       │   └── restore-activity-log.blade.php
+│       │       │       ├── logger
+│       │       │       │   ├── activity-log-cleared.blade.php
+│       │       │       │   ├── activity-log-item.blade.php
+│       │       │       │   ├── activity-log.blade.php
+│       │       │       │   └── partials
+│       │       │       │       └── activity-table.blade.php
+│       │       │       ├── modals
+│       │       │       │   └── confirm-modal.blade.php
+│       │       │       ├── partials
+│       │       │       │   ├── form-status.blade.php
+│       │       │       │   └── styles.blade.php
+│       │       │       └── scripts
+│       │       │           ├── clickable-row.blade.php
+│       │       │           ├── confirm-modal.blade.php
+│       │       │           ├── datatables.blade.php
+│       │       │           └── tooltip.blade.php
+│       │       └── routes
+│       │           └── web.php
+│       └── laravel-pages
+│           ├── .gitignore
+│           ├── LICENSE.LICENSE
+│           ├── README.md
+│           ├── composer.json
+│           └── src
+│               └── LaravelPagesServiceProvider.php
 ├── phpunit.xml
 ├── public
 │   ├── .htaccess
@@ -751,7 +853,6 @@ laravel-auth
 │       │   ├── admin
 │       │   │   ├── active-users.blade.php
 │       │   │   ├── home.blade.php
-│       │   │   ├── php-details.blade.php
 │       │   │   └── route-details.blade.php
 │       │   ├── status.blade.php
 │       │   └── user
@@ -818,4 +919,4 @@ Before opening an issue there are a couple of considerations:
 Open source projects are a the community’s responsibility to use, contribute, and debug.
 
 ### Laravel Auth License
-Laravel-auth is licensed under the MIT license. Enjoy!
+Laravel-auth is licensed under the [MIT license](https://opensource.org/licenses/MIT). Enjoy!
