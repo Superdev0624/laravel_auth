@@ -18,6 +18,6 @@ return [
     'rolesEnabled'                  => true,
 
     // Optional Roles Middleware
-    'rolesMiddlware'                => ['activated', 'role:admin', 'activity', 'twostep'],
+    'rolesMiddlware'                => ['auth', 'activated', 'role:admin', 'activity', 'twostep'],
 
 ];
