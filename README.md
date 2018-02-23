@@ -221,7 +221,7 @@ php artisan vendor:publish --tag=laravel2step
       ```
 
   3. From the projects root folder run ```composer update```
-  4. Add the service provider to ```/config/services.php```
+  4. Add the service provider to ```/app/services.php```
      * Example:
 
      ```
@@ -245,14 +245,16 @@ php artisan vendor:publish --tag=laravel2step
       * Example:
       In file ```/resources/views/auth/login.blade.php``` add ONE of the following:
          * Conventional HTML:
-        ```
-        <a href="{{ route('social.redirect', ['provider' => 'twitch']) }}" class="btn btn-lg btn-primary btn-block twitch">Twitch</a>
-        ```
-         * Use Laravel HTML Facade with [Laravel Collective](https://laravelcollective.com/):
 
-        ```
-        {!! HTML::link(route('social.redirect', ['provider' => 'twitch']), 'Twitch', array('class' => 'btn btn-lg btn-primary btn-block twitch')) !!}
-        ```
+      ```
+         <a href="{{ route('social.redirect', ['provider' => 'twitch']) }}" class="btn btn-lg btn-primary btn-block twitch">Twitch</a>
+      ```
+
+         * Use Laravel HTML Facade with [Laravel Collective](https://laravelcollective.com/) (recommended)
+
+      ```
+         {!! HTML::link(route('social.redirect', ['provider' => 'twitch']), 'Twitch', array('class' => 'btn btn-lg btn-primary btn-block twitch')) !!}
+      ```
 
 ### Other API keys
 * [Google Maps API v3 Key](https://developers.google.com/maps/documentation/javascript/get-api-key#get-an-api-key)
