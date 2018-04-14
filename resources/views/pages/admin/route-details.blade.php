@@ -11,14 +11,14 @@
 
 				@include('partials.form-status')
 
-				<div class="card">
-					<div class="card-header">
+				<div class="panel panel-default">
+					<div class="panel-heading">
 						Routing Information
 						<span class="badge badge-primary pull-right">{{ count($routes) }} routes</span>
 					</div>
-					<div class="card-body">
+					<div class="panel-body">
 						<div class="table-responsive">
-							<table class="table table-striped table-sm data-table">
+							<table class="table table-striped table-condensed data-table">
 								<thead>
 									<tr class="success">
 					                    <th>URI</th>
