@@ -123,7 +123,7 @@ class ActivateController extends Controller
 
         $data = [
             'email' => $user->email,
-            'date'  => $lastActivation ? $lastActivation->created_at->format('m/d/Y') : null, //
+            'date'  => $lastActivation->created_at->format('m/d/Y'), //
         ];
 
         return view($this->getActivationView())->with($data);

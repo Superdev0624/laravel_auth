@@ -6,14 +6,6 @@
 [![Build Status](https://scrutinizer-ci.com/g/jeremykenedy/laravel-auth/badges/build.png?b=master)](https://scrutinizer-ci.com/g/jeremykenedy/laravel-auth/build-status/master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-### Sponsor
-<table>
-   <tr>
-      <td><img src="https://s3.amazonaws.com/sponsers/sponsor-logo.png"></td>
-      <td>If you want to quickly add secure token-based authentication to Laravel apps, feel free to check Auth0's Laravel SDK and free plan at <a href="https://auth0.com/overview?utm_source=GHsponsor&utm_medium=GHsponsor&utm_campaign=laravel-auth&utm_content=auth" target="_blank">https://auth0.com/overview</a>.</td>
-   </tr>
-</table>
-
 #### Table of contents
 - [About](#about)
 - [Features](#features)
@@ -920,16 +912,13 @@ laravel-auth
 
 ### Opening an Issue
 Before opening an issue there are a couple of considerations:
-* If you did not **star this repo** *I will close your issue immediatly without consideration.* **My time is valuable**.
-* **Read the instructions** and make sure all steps were *followed correctly*.
-* **Check** that the issue is not *specific to your development environment* setup.
-* **Provide** *duplication steps*.
-* **Attempt to look into the issue**, and if you *have a solution, make a pull request*.
-* **Show that you have made an attempt** to *look into the issue*.
-* **Check** to see if the issue you are *reporting is a duplicate* of a previous reported issue.
-* **Following these instructions show me that you have tried.**
-* If you have a questions send me an email to jeremykenedy@gmail.com
-* Please be considerate that this is an open source project that I provide to the community for FREE when openeing an issue. 
+* Read the instructions and make sure all steps were followed correctly.
+* Check that the issue is not specific to your development environment setup.
+* Provide duplication steps.
+* Attempt to look into the issue, and if you have a solution, make a pull request.
+* Show that you have made an attempt to look into the issue.
+* Check to see if the issue you are reporting is a duplicate of a previous reported issue.
+* If you did not star this repo I will close your issue immediatly without consideration. My time is valuable.
 
 Open source projects are a the community’s responsibility to use, contribute, and debug.
 
