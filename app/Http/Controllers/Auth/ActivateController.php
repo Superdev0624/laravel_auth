@@ -107,7 +107,7 @@ class ActivateController extends Controller
                 ->where('created_at', '>=', Carbon::now()->subHours(config('settings.timePeriod')))
                 ->count();
 
-            if ($activationsCount > config('settings.maxAttempts')) {
+            if ($activationsCount > config('settings.timePeriod')) {
                 Log::info('Exceded max resends in last '.config('settings.timePeriod').' hours. '.$currentRoute.'. ', [$user]);
 
                 $data = [
