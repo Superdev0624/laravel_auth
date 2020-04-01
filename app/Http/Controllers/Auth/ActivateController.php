@@ -97,6 +97,7 @@ class ActivateController extends Controller
                 ->with('message', $message);
             }
 
+
             return redirect()->route(self::getUserHomeRoute())
                 ->with('status', 'info')
                 ->with('message', $message);
