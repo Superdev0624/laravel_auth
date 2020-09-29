@@ -49,7 +49,7 @@ class Profile extends Model
      */
     public function user()
     {
-        return $this->belongsTo(\App\Models\User::class);
+        return $this->belongsTo('App\Models\User');
     }
 
     /**
@@ -59,6 +59,6 @@ class Profile extends Model
      */
     public function theme()
     {
-        return $this->hasOne(\App\Models\Theme::class);
+        return $this->hasOne('App\Models\Theme');
     }
 }

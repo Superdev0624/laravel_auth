@@ -107,7 +107,7 @@ class User extends Authenticatable
      */
     public function social()
     {
-        return $this->hasMany(\App\Models\Social::class);
+        return $this->hasMany('App\Models\Social');
     }
 
     /**
@@ -115,7 +115,7 @@ class User extends Authenticatable
      */
     public function profile()
     {
-        return $this->hasOne(\App\Models\Profile::class);
+        return $this->hasOne('App\Models\Profile');
     }
 
     /**
@@ -123,7 +123,7 @@ class User extends Authenticatable
      */
     public function profiles()
     {
-        return $this->belongsToMany(\App\Models\Profile::class)->withTimestamps();
+        return $this->belongsToMany('App\Models\Profile')->withTimestamps();
     }
 
     /**
